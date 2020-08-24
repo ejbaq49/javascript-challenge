@@ -21,6 +21,23 @@ function filterDate() {
   filteredData = tableData.filter(
     (sighting) => sighting.datetime === inputValue
   );
+  // // Clear table
+  // tbody.html("");
+  // Loop through data and add row to table body
+  // filteredData.forEach((sighting) => {
+  //   var row = tbody.append("tr");
+  //   // Loop through each document and add td
+  //   Object.entries(sighting).forEach(([key, value]) => {
+  //     var cell = row.append("td");
+  //     cell.text(value);
+  //   });
+  // });
+
+  // Call function to populate table
+  populateTable(filteredData);
+}
+
+function populateTable(filteredData) {
   // Clear table
   tbody.html("");
   // Loop through data and add row to table body
