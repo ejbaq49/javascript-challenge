@@ -17,10 +17,6 @@ function filterDate() {
   // Get date from input
   var inputElement = d3.select(".form-control");
   var inputValue = inputElement.property("value");
-  // Console inputValue
-  console.log(`Before: ${inputValue}`);
-  prmDate = new Date(inputValue);
-  console.log(`After: ${prmDate}`);
   // Filter data
   filteredData = tableData.filter(
     (sighting) => sighting.datetime === inputValue
