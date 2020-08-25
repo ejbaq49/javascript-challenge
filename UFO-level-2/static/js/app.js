@@ -1,14 +1,43 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
+// Map data points to new arrays
+// Cities
+var cities = [];
+tableData.map(function (sighting) {
+  if (!cities.includes(sighting.city)) {
+    cities.push(sighting.city);
+  }
+});
+
+// States
+var states = [];
+tableData.map(function (sighting) {
+  if (!states.includes(sighting.state)) {
+    states.push(sighting.state);
+  }
+});
+
+// console
+console.log(cities);
+console.log(states);
+
+// Get needed HTML elements
 var tbody = d3.select("tbody");
 var button = d3.select("#filter-btn");
 var form = d3.select("form");
+var citySelect = d3.select("#city-select"); // add "option" elements here
 
 // Create event handlers
 button.on("click", filterDate);
 form.on("submit", filterDate);
+
+// Add city list to html
+cities.forEach((city) => {
+  console.log(city);
+  var newCity = citySelect.append("option");
+  newCity.text(city);
+});
 
 // Add function to filter by date
 function filterDate() {
