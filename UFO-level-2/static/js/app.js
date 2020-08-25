@@ -44,8 +44,8 @@ function filterDate() {
   // Prevent refresh
   d3.event.preventDefault();
   // Console selected city
-  var selectedCity = d3.select("option");
-  console.log(selectedCity.value);
+  var selectedCity = citySelect.property("value");
+  console.log(selectedCity);
   // Get date from input
   var inputElement = d3.select(".form-control");
   var inputValue = inputElement.property("value");
