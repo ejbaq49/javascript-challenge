@@ -19,8 +19,8 @@ tableData.map(function (sighting) {
 });
 
 // console
-console.log(cities);
-console.log(states);
+// console.log(cities);
+// console.log(states);
 
 // Get needed HTML elements
 var tbody = d3.select("tbody");
@@ -34,7 +34,7 @@ form.on("submit", filterDate);
 
 // Add city list to html
 cities.forEach((city) => {
-  console.log(city);
+  // console.log(city);
   var newCity = citySelect.append("option");
   newCity.text(city);
 });
@@ -43,6 +43,9 @@ cities.forEach((city) => {
 function filterDate() {
   // Prevent refresh
   d3.event.preventDefault();
+  // Console selected city
+  var selectedCity = d3.select("option");
+  console.log(selectedCity.value);
   // Get date from input
   var inputElement = d3.select(".form-control");
   var inputValue = inputElement.property("value");
