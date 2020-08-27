@@ -9,6 +9,9 @@ tableData.map(function (sighting) {
     cities.push(sighting.city);
   }
 });
+// Sort Cities
+var citiesSort = cities;
+citiesSort.sort();
 
 // States
 var states = [];
@@ -17,10 +20,22 @@ tableData.map(function (sighting) {
     states.push(sighting.state);
   }
 });
+// Sort States
+var statesSort = states;
+statesSort.sort();
+
+// Country
+var countries = [];
+tableData.map(function (sighting) {
+  if (!countries.includes(sighting.country)) {
+    countries.push(sighting.country);
+  }
+});
 
 // console
 // console.log(cities);
-// console.log(states);
+console.log(states);
+console.log(countries);
 
 // Get needed HTML elements
 var tbody = d3.select("tbody");
@@ -33,7 +48,7 @@ button.on("click", filterDate);
 form.on("submit", filterDate);
 
 // Add city list to html
-cities.forEach((city) => {
+citiesSort.forEach((city) => {
   // console.log(city);
   var newCity = citySelect.append("option");
   newCity.text(city);
