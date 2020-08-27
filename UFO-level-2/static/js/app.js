@@ -106,14 +106,13 @@ function filterDate() {
   console.log(selectedCountry);
   console.log(inputValue);
 
-  if (inputValue === "") {
-    console.log("date is blank");
+  if (inputValue !== "") {
+    // console.log("date is blank");
+    // Filter data based on selections
+    filteredData = tableData.filter(
+      (sighting) => sighting.datetime === inputValue
+    );
   }
-
-  // Filter data based on selections
-  filteredData = tableData.filter(
-    (sighting) => sighting.datetime === inputValue
-  );
 
   // Call function to populate table
   populateTable(filteredData);
