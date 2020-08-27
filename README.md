@@ -1,6 +1,6 @@
 # javascript-challenge
 
-### _To Do_
+## _To Do_
 
 [ ] capialize city, state & country
 
@@ -9,3 +9,7 @@
 [ ] sort city selection
 
 [ ] sort state selection
+
+## _Helpful Links_
+
+[Sorting Strings](https://dev.to/banesag/sorting-arrays-of-strings-in-javascript-2g11)

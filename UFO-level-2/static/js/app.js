@@ -3,7 +3,7 @@ var tableData = data;
 
 // Map data points to new arrays
 // Cities
-var cities = [];
+var cities = ["- choose"];
 tableData.map(function (sighting) {
   if (!cities.includes(sighting.city)) {
     cities.push(sighting.city);
@@ -14,7 +14,7 @@ var citiesSort = cities;
 citiesSort.sort();
 
 // States
-var states = [];
+var states = ["- choose"];
 tableData.map(function (sighting) {
   if (!states.includes(sighting.state)) {
     states.push(sighting.state);
@@ -25,12 +25,24 @@ var statesSort = states;
 statesSort.sort();
 
 // Country
-var countries = [];
+var countries = ["- choose"];
 tableData.map(function (sighting) {
   if (!countries.includes(sighting.country)) {
     countries.push(sighting.country);
   }
 });
+
+// Shape
+var shapes = ["- choose"];
+tableData.map(function (sighting) {
+  if (!shapes.includes(sighting.shape)) {
+    shapes.push(sighting.shape);
+  }
+});
+
+// Sort shapes
+var shapesSort = shapes;
+shapesSort.sort();
 
 // console
 // console.log(cities);
@@ -44,6 +56,7 @@ var form = d3.select("form");
 var citySelect = d3.select("#city-select"); // add "option" elements here
 var stateSelect = d3.select("#state-select");
 var countrySelect = d3.select("#country-select");
+var shapeSelect = d3.select("#shape-select");
 
 // Create event handlers
 button.on("click", filterDate);
@@ -66,6 +79,12 @@ statesSort.forEach((state) => {
 countries.forEach((country) => {
   var newCountry = countrySelect.append("option");
   newCountry.text(country);
+});
+
+// Add shapes to html
+shapesSort.forEach((shape) => {
+  var newShape = shapeSelect.append("option");
+  newShape.text(shape);
 });
 
 // Add function to filter by date
