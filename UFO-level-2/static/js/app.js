@@ -42,6 +42,8 @@ var tbody = d3.select("tbody");
 var button = d3.select("#filter-btn");
 var form = d3.select("form");
 var citySelect = d3.select("#city-select"); // add "option" elements here
+var stateSelect = d3.select("#state-select");
+var countrySelect = d3.select("#country-select");
 
 // Create event handlers
 button.on("click", filterDate);
@@ -54,13 +56,31 @@ citiesSort.forEach((city) => {
   newCity.text(city);
 });
 
+// Add states to html
+statesSort.forEach((state) => {
+  var newState = stateSelect.append("option");
+  newState.text(state);
+});
+
+// Add Countries to html
+countries.forEach((country) => {
+  var newCountry = countrySelect.append("option");
+  newCountry.text(country);
+});
+
 // Add function to filter by date
 function filterDate() {
   // Prevent refresh
   d3.event.preventDefault();
-  // Console selected city
+
+  // Console selected city, state & country
   var selectedCity = citySelect.property("value");
   console.log(selectedCity);
+  var selectedState = stateSelect.property("value");
+  console.log(selectedState);
+  var selectedCountry = countrySelect.property("value");
+  console.log(selectedCountry);
+
   // Get date from input
   var inputElement = d3.select(".form-control");
   var inputValue = inputElement.property("value");
