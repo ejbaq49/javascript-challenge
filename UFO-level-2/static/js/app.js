@@ -44,10 +44,9 @@ tableData.map(function (sighting) {
 var shapesSort = shapes;
 shapesSort.sort();
 
-// console
 // console.log(cities);
-console.log(states);
-console.log(countries);
+// console.log(states);
+// console.log(countries);
 
 // Get needed HTML elements
 var tbody = d3.select("tbody");
@@ -92,18 +91,26 @@ function filterDate() {
   // Prevent refresh
   d3.event.preventDefault();
 
-  // Console selected city, state & country
+  // Get selected city, state, country, shape
   var selectedCity = citySelect.property("value");
-  console.log(selectedCity);
   var selectedState = stateSelect.property("value");
-  console.log(selectedState);
   var selectedCountry = countrySelect.property("value");
-  console.log(selectedCountry);
+  var selectedShape = shapeSelect.property("value");
 
   // Get date from input
   var inputElement = d3.select(".form-control");
   var inputValue = inputElement.property("value");
-  // Filter data
+
+  console.log(selectedCity);
+  console.log(selectedState);
+  console.log(selectedCountry);
+  console.log(inputValue);
+
+  if (inputValue === "") {
+    console.log("date is blank");
+  }
+
+  // Filter data based on selections
   filteredData = tableData.filter(
     (sighting) => sighting.datetime === inputValue
   );
