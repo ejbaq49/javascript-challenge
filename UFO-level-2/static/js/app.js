@@ -91,28 +91,41 @@ function filterDate() {
   // Prevent refresh
   d3.event.preventDefault();
 
+  // Get date from input
+  var inputElement = d3.select(".form-control");
+  var inputValue = inputElement.property("value");
   // Get selected city, state, country, shape
   var selectedCity = citySelect.property("value");
+  if (selectedCity === "- choose") {
+    selectedCity = "";
+  }
   var selectedState = stateSelect.property("value");
   var selectedCountry = countrySelect.property("value");
   var selectedShape = shapeSelect.property("value");
 
-  // Get date from input
-  var inputElement = d3.select(".form-control");
-  var inputValue = inputElement.property("value");
+  //console
+  console.log(`Date: ${inputValue}`);
+  console.log(`City: ${selectedCity}`);
+
+  filteredData = tableData.filter((sighting) => {
+    return (
+      (!inputValue || sighting.datetime === inputValue) &&
+      (!selectedCity || sighting.city === selectedCity)
+    );
+  });
 
   console.log(selectedCity);
   console.log(selectedState);
   console.log(selectedCountry);
   console.log(inputValue);
 
-  if (inputValue !== "") {
-    // console.log("date is blank");
-    // Filter data based on selections
-    filteredData = tableData.filter(
-      (sighting) => sighting.datetime === inputValue
-    );
-  }
+  // if (inputValue !== "") {
+  //   // console.log("date is blank");
+  //   // Filter data based on selections
+  //   filteredData = tableData.filter(
+  //     (sighting) => sighting.datetime === inputValue
+  //   );
+  // }
 
   // Call function to populate table
   populateTable(filteredData);
